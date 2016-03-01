@@ -7,6 +7,22 @@ function changeColor(){
   var color = document.getElementById("snakeColor").value
   game.snakeColor = color
 }
+
+function changeFoodColor(){
+  var color = document.getElementById("foodColor").value
+  game.foodColor = color
+}
+
+function changeSpeed(){
+  var speed = document.getElementById("gameSpeed").value
+  game.speed = parseInt(speed)
+}
+
+function changeBorderColor(){
+  var color = document.getElementById("borderColor").value
+  game.borderColor = color
+}
+
 //// Step 1: Drawing a Border
 function drawBorder(color, score){
   var canvas = document.getElementById("canvas");
@@ -24,12 +40,13 @@ var  Game = function (){
       self.snake = new Snake()
       self.food = createFood()
       self.score = 0;
-      self.speed = 240;
+      self.speed = 1000;
       self.foodColor = 'red'
       self.snakeColor = 'blue'
+      self.borderColor = 'orange'
 
       var interval = function() {
-          drawBorder('orange', self.score);
+          drawBorder(self.borderColor, self.score);
           updateSnake(self.snake);
           drawSnake(self.snake, self.snakeColor);
           drawFood(self.food, self.foodColor);
@@ -157,9 +174,4 @@ function checkCollision(snake, food){
 
     }
 
-}
-
-
-function pause(){
-  debugger;
 }
